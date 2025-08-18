@@ -40,4 +40,16 @@ pipeline {
       }
     }
   }
+   post {
+        success {
+            mail to: 'kancharlaudaysree@gmail.com',
+                 subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                 body: "The build succeeded!"
+        }
+        failure {
+            mail to: 'kancharlaudaysree@gmail.com',
+                 subject: "FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                 body: "The build failed!"
+        }
+    }
 }
